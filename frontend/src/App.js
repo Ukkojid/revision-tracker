@@ -1,12 +1,23 @@
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Home from './components/Home';
+import About from './components/About';
+import LoginSignUp from './components/LoginSignUp';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
-function App() {
+const App = () => {
   return (
     <div>
-      <h1>Welcome to the Revision Tracker</h1>
-      <p>Your content goes here.</p>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/loginsignup" element={<LoginSignUp />} />
+      </Routes>
+      <Footer />
     </div>
   );
-}
+};
 
 export default App;
