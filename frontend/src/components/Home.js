@@ -1,13 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const imageRef = useRef(null);
 
   useEffect(() => {
     gsap.to(imageRef.current, {
-      x: 300,
-      duration: 3,
+      y: 600,
+      duration: 1,
       repeat: -1,
       yoyo: true,
     });
@@ -18,8 +19,10 @@ const Home = () => {
       <div className="text-center">
         <h2 className="text-4xl font-bold">Welcome to TrackRevision</h2>
         <p className="mt-4 text-lg">Your personal tool for tracking and managing your study revisions.</p>
+      
+      <img src="/images/homepage.jpg" alt="Scrolling Image"  className="mx-auto mt-10 " />
       </div>
-      <img src="/images/homepage.jpg" alt="Scrolling Image" ref={imageRef} className="mx-auto mt-10" />
+      
     </div>
   );
 };
