@@ -7,7 +7,7 @@ const Footer = () => {
         <p>&copy; {new Date().getFullYear()} TrackRevision. All Rights Reserved.</p>
         <p>
           Built with love by the TrackRevision team.{' '}
-          <a href="https://github.com/your-repo" className="underline">
+          <a href="https://github.com/Ukkojid/revision-tracker" className="underline">
             GitHub Repository
           </a>
         </p>
