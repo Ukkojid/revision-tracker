@@ -9,7 +9,6 @@ const LoginSignUp = () => {
     password: ''
   });
 
-  // Handle form input change
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -17,34 +16,30 @@ const LoginSignUp = () => {
     });
   };
 
-  // Toggle between login and sign-up
   const toggleForm = () => {
     setIsLogin(!isLogin);
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     const url = isLogin ? 'http://localhost:5000/api/users/login' : 'http://localhost:5000/api/users/register';
 
     try {
       const { data } = await axios.post(url, formData);
-      console.log(data); // Use this data (e.g., token) as needed
-      // Redirect or do something after successful login/signup
+      console.log(data);
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
-      <div className="w-full max-w-md p-8 bg-white rounded shadow-lg">
-        <h2 className="text-2xl font-bold mb-6 text-center">
+    <div className="flex justify-center items-center h-screen bg-gray-200">
+      <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg border border-gray-300">
+        <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
           {isLogin ? 'Login' : 'Sign Up'}
         </h2>
 
         <form onSubmit={handleSubmit}>
-          {/* Show username field only in sign-up */}
           {!isLogin && (
             <div className="mb-4">
               <label htmlFor="username" className="block text-gray-700">Username</label>
@@ -54,8 +49,8 @@ const LoginSignUp = () => {
                 name="username"
                 value={formData.username}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border rounded"
-                required={!isLogin}
+                className="w-full px-4 py-2 border border-gray-400 rounded focus:outline-none focus:ring focus:ring-blue-300"
+                required
               />
             </div>
           )}
@@ -68,7 +63,7 @@ const LoginSignUp = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full px-4 py-2 border rounded"
+              className="w-full px-4 py-2 border border-gray-400 rounded focus:outline-none focus:ring focus:ring-blue-300"
               required
             />
           </div>
@@ -81,12 +76,12 @@ const LoginSignUp = () => {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              className="w-full px-4 py-2 border rounded"
+              className="w-full px-4 py-2 border border-gray-400 rounded focus:outline-none focus:ring focus:ring-blue-300"
               required
             />
           </div>
 
-          <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">
+          <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-200">
             {isLogin ? 'Login' : 'Sign Up'}
           </button>
         </form>
