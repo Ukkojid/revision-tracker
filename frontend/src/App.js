@@ -12,7 +12,7 @@ import Analytics from './components/analytics';
 import Sync from './components/sync';
 import InteractiveNotes from './components/interactivenotes';
 import FriendlyInterface from './components/friendlyinterface';
-import DemoLogin from './components/demoLogin';
+import Profile from './components/Profile'
 
 const App = () => {
   return (
@@ -25,11 +25,12 @@ const App = () => {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/smartreminders" element={<SmartReminders />} />
         <Route path="/analytics" element={<Analytics />} />
-        <Route path="/demoLogin" element={ <DemoLogin />} />
         <Route path="/studyplans" element={ <StudyPlans />} />
         <Route path="/sync" element={ <Sync />} />
         <Route path="/interactivenotes" element={ <InteractiveNotes />} />
         <Route path="/friendlyinterface" element={ <FriendlyInterface />} />
+        <Route path="/profile" element={ <Profile /> }
+        />
         
         
       </Routes>

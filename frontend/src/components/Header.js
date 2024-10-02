@@ -27,7 +27,7 @@ const Header = () => {
         <Link to="/loginsignup" className="flex items-center hover:bg-red-600 rounded px-3 py-2 transition">
           <FaSignInAlt className="mr-2" /> Login/SignUp
         </Link>
-        <a href="/demoLogin" className="flex items-center hover:bg-blue-700 rounded px-3 py-2 transition">
+        <a href="/profile" className="flex items-center hover:bg-blue-700 rounded px-3 py-2 transition">
           <FaUserShield className="mr-2" /> Admin Login
         </a>
       </nav>
@@ -50,9 +50,7 @@ const Header = () => {
             <Link to="/loginsignup" className="hover:bg-red-200 rounded px-3 py-2 transition" onClick={closeMenu}>
               Login/SignUp
             </Link>
-            <a href="/demoLogin" className="hover:bg-blue-200 rounded px-3 py-2 transition" onClick={closeMenu}>
-              Admin Login
-            </a>
+           
           </nav>
         </div>
       )}

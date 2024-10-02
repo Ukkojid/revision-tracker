@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+// import Profile from './component/profile'
+
 
 const LoginSignUp = () => {
+  const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(true);
   const [formData, setFormData] = useState({
     username: '',
     email: '',
     password: ''
   });
+  const [message, setMessage] = useState('');
+  
 
   const handleChange = (e) => {
     setFormData({
@@ -18,18 +24,38 @@ const LoginSignUp = () => {
 
   const toggleForm = () => {
     setIsLogin(!isLogin);
+    setMessage(''); // Clear message on form switch
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const url = isLogin ? 'http://localhost:5000/api/users/login' : 'http://localhost:5000/api/users/register';
 
-    try {
-      const { data } = await axios.post(url, formData);
-      console.log(data);
-    } catch (error) {
-      console.error(error);
+    if (isLogin) {
+      // Hardcoded credentials for testing
+      const hardcodedUsername = 'admin';
+      const hardcodedPassword = 'admin';
+
+      if (formData.username === hardcodedUsername && formData.password === hardcodedPassword) {
+        setMessage('Login successful!');
+        navigate('/profile')
+      } else {
+        setMessage('Invalid username or password. Please try again.');
+      }
+    } else {
+      // Handle registration logic here if needed
+      setMessage('Registration is currently disabled for testing.');
     }
+
+    // If you still want to call your API for registration
+    // const url = 'http://localhost:5000/api/users/register';
+    // try {
+    //   const { data } = await axios.post(url, formData);
+    //   console.log(data);
+    //   setMessage('Registration successful!');
+    // } catch (error) {
+    //   console.error(error);
+    //   setMessage('Registration failed.');
+    // }
   };
 
   return (
@@ -39,8 +65,9 @@ const LoginSignUp = () => {
           {isLogin ? 'Login' : 'Sign Up'}
         </h2>
 
+        {message && <p className="text-red-500 text-center mb-4">{message}</p>}
+
         <form onSubmit={handleSubmit}>
-          {!isLogin && (
             <div className="mb-4">
               <label htmlFor="username" className="block text-gray-700">Username</label>
               <input
@@ -53,8 +80,8 @@ const LoginSignUp = () => {
                 required
               />
             </div>
-          )}
 
+        {!isLogin && ( 
           <div className="mb-4">
             <label htmlFor="email" className="block text-gray-700">Email</label>
             <input
@@ -67,6 +94,7 @@ const LoginSignUp = () => {
               required
             />
           </div>
+        )}
 
           <div className="mb-6">
             <label htmlFor="password" className="block text-gray-700">Password</label>

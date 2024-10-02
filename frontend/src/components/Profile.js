@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaBars, FaTimes, FaTachometerAlt, FaBell, FaClipboardList, FaChartLine, FaSyncAlt, FaStickyNote, FaUserFriends } from 'react-icons/fa';
 
-const DemoLogin = () => {
+const Profile = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -84,4 +84,4 @@ const DemoLogin = () => {
   );
 };
 
-export default DemoLogin;
+export default Profile;
