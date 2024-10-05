@@ -11,8 +11,9 @@ import StudyPlans from './components/studyplans';
 import Analytics from './components/analytics';
 import Sync from './components/sync';
 import InteractiveNotes from './components/interactivenotes';
-import FriendlyInterface from './components/friendlyinterface';
-import Profile from './components/Profile'
+import Subjects from './components/subjects';
+import Profile from './components/Profile';
+import AddSubject from './components/AddSubject';
 
 const App = () => {
   return (
@@ -28,9 +29,12 @@ const App = () => {
         <Route path="/studyplans" element={ <StudyPlans />} />
         <Route path="/sync" element={ <Sync />} />
         <Route path="/interactivenotes" element={ <InteractiveNotes />} />
-        <Route path="/friendlyinterface" element={ <FriendlyInterface />} />
+        <Route path="/subjects" element={ <Subjects />} />
         <Route path="/profile" element={ <Profile /> }
         />
+        <Route path="/addsubject" element={
+          <AddSubject /> }
+          />
         
         
       </Routes>
