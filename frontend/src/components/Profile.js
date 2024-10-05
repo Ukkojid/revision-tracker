@@ -1,84 +1,70 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { FaBars, FaTimes, FaTachometerAlt, FaBell, FaClipboardList, FaChartLine, FaSyncAlt, FaStickyNote, FaUserFriends } from 'react-icons/fa';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { FaUserCircle, FaTachometerAlt, FaBell, FaClipboardList, FaBookOpen } from 'react-icons/fa';
 
 const Profile = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const closeMenu = () => {
-    setIsMenuOpen(false);
+  const handleLogout = () => {
+    // Add logout logic here, such as clearing user session
+    navigate('/'); // Redirect to home after logout
   };
 
   return (
-    <div className="flex flex-col md:flex-row min-h-screen">
-      <div className="relative">
-        {/* Menu Bar Icon in the Top-Right Corner */}
-               {isMenuOpen ? (
-            <button onClick={closeMenu} className="focus:outline-none">
-              <FaTimes className="text-white text-3xl" />
-            </button>
-          ) : (
-            <button onClick={toggleMenu} className="focus:outline-none">
-              <FaBars className="text-black text-3xl" />
-            </button>
-          )}
+    <div className="profile p-6 bg-gray-100 min-h-screen">
+      <div className="profile-header text-center mb-8">
+        <FaUserCircle className="text-8xl mx-auto text-blue-600" />
+        <h2 className="text-4xl font-bold mt-4">deepak01</h2>
+        <p className="text-lg text-gray-700">Manage your study materials and revisions</p>
+      </div>
 
-
-        {/* Sliding Sidebar for mobile - now on the left side */}
-        <div
-          className={`fixed top-0 left-0 h-full bg-zinc-600 text-white font-bold flex flex-col p-4 space-y-6 w-64 transform ${
-            isMenuOpen ? 'translate-x-0' : '-translate-x-full'
-          } transition-transform duration-300 ease-in-out md:hidden`}
-        >
-          {/* Close button */}
-          <button className="self-end mb-6 text-white text-2xl" onClick={closeMenu}>
-            <FaTimes />
-          </button>
-
-          <Link to="/dashboard" className="flex items-center space-x-2" onClick={closeMenu}>
-            <FaTachometerAlt className="text-xl" /> <span>Dashboard</span>
-          </Link>
-          <Link to="/smartreminders" className="flex items-center space-x-2" onClick={closeMenu}>
-            <FaBell className="text-xl" /> <span>SmartReminders</span>
-          </Link>
-          <Link to="/studyplans" className="flex items-center space-x-2" onClick={closeMenu}>
-            <FaClipboardList className="text-xl" /> <span>StudyPlans</span>
-          </Link>
-          <Link to="/analytics" className="flex items-center space-x-2" onClick={closeMenu}>
-            <FaChartLine className="text-xl" /> <span>Analytics</span>
-          </Link>
-          <Link to="/sync" className="flex items-center space-x-2" onClick={closeMenu}>
-            <FaSyncAlt className="text-xl" /> <span>Sync</span>
-          </Link>
-          <Link to="/interactivenotes" className="flex items-center space-x-2" onClick={closeMenu}>
-            <FaStickyNote className="text-xl" /> <span>InteractiveNotes</span>
-          </Link>
-          <Link to="/friendlyinterface" className="flex items-center space-x-2" onClick={closeMenu}>
-            <FaUserFriends className="text-xl" /> <span>FriendlyInterface</span>
-          </Link>
+      <div className="profile-content bg-white shadow-md rounded-lg p-5">
+        <h3 className="text-3xl font-semibold mb-4">Profile Information</h3>
+        <div className="mb-4">
+          <strong>Name:</strong> <span className="text-gray-700">Deepak Ukkoji</span>
         </div>
-      </div>
+        <div className="mb-4">
+          <strong>Email:</strong> <span className="text-gray-700">ukkojid@gmail.com</span>
+        </div>
+        <div className="mb-4">
+          <strong>Joined:</strong> <span className="text-gray-700">October 5, 2024</span>
+        </div>
 
-      {/* Full sidebar for desktop */}
-      <div className="hidden md:flex flex-col space-y-4 w-64 bg-zinc-600 text-white p-4 ">
-        
-        <Link to="/dashboard" className="flex items-center space-x-2"><FaTachometerAlt /> <span>Dashboard</span></Link>
-        <Link to="/smartreminders" className="flex items-center space-x-2"><FaBell /> <span>SmartReminders</span></Link>
-        <Link to="/studyplans" className="flex items-center space-x-2"><FaClipboardList /> <span>StudyPlans</span></Link>
-        <Link to="/analytics" className="flex items-center space-x-2"><FaChartLine /> <span>Analytics</span></Link>
-        <Link to="/sync" className="flex items-center space-x-2"><FaSyncAlt /> <span>Sync</span></Link>
-        <Link to="/interactivenotes" className="flex items-center space-x-2"><FaStickyNote /> <span>InteractiveNotes</span></Link>
-        <Link to="/friendlyinterface" className="flex items-center space-x-2"><FaUserFriends /> <span>FriendlyInterface</span></Link>
-      </div>
+        <h3 className="text-3xl font-semibold mb-4 mt-6">Actions</h3>
+        <div className="action-buttons flex flex-col space-y-4">
+          <button
+            className="flex items-center bg-blue-600 text-white p-3 rounded hover:bg-blue-700 transition"
+            onClick={() => navigate('/dashboard')}
+          >
+            <FaTachometerAlt className="mr-2" /> Dashboard
+          </button>
+          <button
+            className="flex items-center bg-green-600 text-white p-3 rounded hover:bg-green-700 transition"
+            onClick={() => navigate('/studyplans')}
+          >
+            <FaClipboardList className="mr-2" /> Manage Subjects
+          </button>
+          <button
+            className="flex items-center bg-yellow-600 text-white p-3 rounded hover:bg-yellow-700 transition"
+            onClick={() => navigate('/smartreminders')}
+          >
+            <FaBell className="mr-2" /> View Reminders
+          </button>
+          <button
+            className="flex items-center bg-purple-600 text-white p-3 rounded hover:bg-purple-700 transition"
+            onClick={() => navigate('/studyplans')}
+          >
+            <FaBookOpen className="mr-2" /> Study Materials
+          </button>
+        </div>
 
-      <div className="flex-grow flex flex-col items-center justify-center text-center p-6">
-        <h2 className="text-4xl font-bold mb-4">Welcome to TrackRevision</h2>
-        <p className="mt-4 text-lg mb-8">Your personal tool for tracking and managing your study revisions.</p>
-        <img src="/images/StepDemoLogin.png" alt="Demo Login" className="mx-auto p-10 w-full h-3/4 rounded-lg shadow-md" />
+        <button
+          className="mt-6 w-full bg-red-600 text-white p-3 rounded hover:bg-red-700 transition"
+          onClick={ ()=> navigate('/')
+          }
+        >
+          Logout
+        </button>
       </div>
     </div>
   );
